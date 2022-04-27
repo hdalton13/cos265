@@ -1,0 +1,247 @@
+<meta charset="utf-8" lang="en">  <!-- this line allows UTF-8 characters in the .html file -->
+
+                    **CR00_Hex**
+
+
+<!--
+
+General
+=======
+
+I have chosen three submissions for you to review.
+Only the `HexBoard.java` file from the submitted zip files was copied into a fresh project folder, so no personally identifiable information remains.
+
+Perform a code review on `HexBoard.java` for each of the sample solutions.
+Spend approximately 10--20 minutes on studying each submission.
+
+Keep in mind that these solutions are the work of your peers.
+Try to remain as objective and constructive as possible, as you could be reviewing the work of one of your teammates!
+
+If you recognize your own work, you are free to claim ownership, or you may remain silent on the ownership.
+That is up to you.
+
+For those that want to learn what other reviews found, I will post the results to the course LMS page.
+
+
+
+Submission
+----------
+
+Submit only the `readme.html` file.
+Only one person per group needs to make a submission.
+
+
+-->
+
+
+Reviewer Info
+=============
+
+<!-- fill out the following table with your information -->
+<!-- Note: wrapping table in div.noheader will hide the table's header -->
+<!-- Note: wrapping table in div.firstcol will style the first column different from other columns -->
+<div class="noheader firstcol">
+                  |             
+------------------|-------------
+reviewer 0        | Heather Dalton
+reviewer 1        | Luke Stevens
+</div>
+
+
+
+
+
+
+
+Code Reviews
+============
+
+
+Subject0
+---------
+
+<!--
+How is the clarity of the code?
+Report on clarity of algorithm, comments, variable names, names of helper functions, etc.
+
+What is unique about this approach?
+What is clever about this approach?
+
+Notice any correctness bugs?
+Where, and what input will break the solution?
+
+Notice any efficiency bugs?
+Where, and what input will stress the solution?
+
+Any other comments?
+-->
+
+Clarity: The code was somewhat clear. There were some comments in different places. The names of the variables could have
+been more clear like naming num to be numUnset so you don't have to look at the declaration to see what it was. It isn't clear
+what the difference between the two double arrays and the union object. If they named them "playerBoard", "unionBoard", and kept the "my_union",
+it would have been more clear.
+
+Unique: The way the user created the board with two extra rows and columns on the outside to indicate a physical virtual node.
+Clever: The double array was clever because we couldn't mentally figure out how to get that to work with the union function.
+
+Bugs: None that we could detect.
+
+Efficiency: The board is set up with two for loops which takes the run time out of constant.
+
+Comments: N/A
+
+
+
+Subject1
+---------
+
+<!--
+How is the clarity of the code?
+Report on clarity of algorithm, comments, variable names, names of helper functions, etc.
+
+What is unique about this approach?
+What is clever about this approach?
+
+Notice any correctness bugs?
+Where, and what input will break the solution?
+
+Notice any efficiency bugs?
+Where, and what input will stress the solution?
+
+Any other comments?
+-->
+
+Clarity: This person needs to make the names of their variables more clear because a reviewer should not have to assume what
+the single letter names should be. There are no useful comments for the viewer to understand what is going on. The checkRange
+function was the only well named function, letting the viewer know exactly what its operation was.
+
+Unique: The string array and the plus and minus character to signify the player was really unique.
+Clever: RLIST and CLIST was clever in checking the six places around the set location.
+
+Bugs: Mainly relies on math and seems to be an easy way to get an error. But otherwise there are no bugs that we could see.
+
+Efficiency: For the most part, this person's code was efficient. They had two nested for loops at different times and one
+single for loop also. Other than this, they stayed in constant time. Since there are for loops and nested for loops, the code will
+be stressed with a larger board size input.
+
+Comments: N/A
+
+
+
+Subject2
+---------
+
+<!--
+How is the clarity of the code?
+Report on clarity of algorithm, comments, variable names, names of helper functions, etc.
+
+What is unique about this approach?
+What is clever about this approach?
+
+Notice any correctness bugs?
+Where, and what input will break the solution?
+
+Notice any efficiency bugs?
+Where, and what input will stress the solution?
+
+Any other comments?
+-->
+
+Clarity: This was the best code to look at. All the names for both variables and helper functions were clear and the reviewer
+did not have to assume what any of them were meant to do. The only comment that was added was to clarify that len was the length.
+Otherwise there was no need to add clarifying comments.
+
+Unique: Counting the two different player moves and subtracting it from the size of the board.
+Clever: The two different player unions was unique.
+
+Bugs: The code creates four extra variables in the p1Uf and p2Uf that is unnecessary. We are talking about the 4 virtual nodes.
+Since they create two different UF objects, there is only a need for 2 virtual nodes per object. In creating 4 per object, the creator
+incidentally made 4 extra spaces in memory. Another bug is that they didn't solve the backwash problem.
+
+Efficiency: Very efficient code! There are no loops and it stays in constant time the whole time.
+
+Comments: N/A
+
+
+
+Reflection
+==========
+
+<!--
+What were some common features of the solutions you reviewed?
+
+How has seeing other solutions changed the way you view your submissions?
+
+List any other comments here.
+Feel free to provide any feedback on how much you learned from doing the review, and whether you enjoyed doing it.
+-->
+
+Common: All three coders used a double array for their boards. Two out of three need to name variables better. All uses
+the union-find correctly.
+
+Changed Mind:
+
+    Luke: I wish I would have thought of the two different union objects, one with virtuals and one without, in order to solve the
+    backwash problem. That along with keeping track of the last piece set would have solved it for me. The way Subject2 kept track of
+    moves in order to return the number of unset tiles without a loop is also something I wish I thought of. My code also wasn't the best in
+    terms of comments and readability.
+
+    Heather: Seeing the different thought processes other classmate went through to solve one problem was very interesting to me.
+    I learned that no-matter the problem there can be many different ways to solve it. The other thing I learned in reviewing others
+    people's code is how important clearly naming variable/functions and explaining functionality using comments are.
+
+Feedback: We both really enjoyed looking over others code because it provided a new way that neither of us thought about when
+approaching this problem.
+
+
+
+
+
+
+<!--   Feel free to modify the following to fit a theme of your choosing   -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> <!-- a sans-serif font -->
+<style>  /* A TAYLOR-INSPIRED THEME */
+    body {font-family:'Open Sans',sans-serif;}
+    .md a:link, .md a:visited {color:hsl(252,23.0%,44.3%); font-family:'Open Sans',sans-serif;}
+    .md table.table th {background-color:hsl(252,23.0%,44.3%);}
+    .md .noheader th {display:none;}
+    .md .firstcol td:first-child {white-space:pre;color:white;vertical-align:top;font-weight:bold;border-color:black;background:hsl(252,23.0%,54.3%);}
+    .md .firstcol tr:nth-child(even) td:first-child {background:hsl(252,23.0%,44.3%);}
+    .md div.tilde { margin: 5px 0 20px; }
+</style>
+
+
+<!-- ****************************** -->
+<!--    Leave the content below     -->
+<!-- ****************************** -->
+
+<!-- The script and style below are added for clarity and to workaround a bug -->
+<script>
+    // this is a hack to workaround a bug in Markdeep+Mathjax, where
+    // `&#36;`` is automatically converted to `\(`` and `\)`` too soon.
+    // the following code will replace the innerHTML of all elements
+    // with class "dollar" with a dollar sign.
+    setTimeout(function() {
+        var dollars = document.getElementsByClassName('dollar');
+        for(var i = 0; i < dollars.length; i++) {
+            dollars[i].innerHTML = '&#' + '36;'; // split to prevent conversion to $
+        }
+    }, 1000);
+</script>
+<style>
+    /* adding some styling to <code> tags (but not <pre><code> coding blocks!) */
+    :not(pre) > code {
+        background-color: rgba(0,0,0,0.05);
+        outline: 1px solid rgba(0,0,0,0.15);
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+    }
+    /* fixes table of contents of medium-length document from looking weird if admonitions are behind */
+    .md div.mediumTOC { background: white; }
+    .md div.admonition { position: initial !important; }
+</style>
+
+<!--   Leave the following Markdeep formatting code, as this will format your text above to look nice in a wed browser   -->
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible");</script>
