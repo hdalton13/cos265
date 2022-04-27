@@ -1,0 +1,249 @@
+<meta charset="utf-8" lang="en">  <!-- this line allows UTF-8 characters in the .html file -->
+
+                    **P05_KDTrees**
+
+<!--
+
+General
+========
+
+For each of your team's implementations, explain the following (where appropriate and applicable):
+
+- details on calling conventions, input and output data formats, limitations, bugs, and special features.
+- negative aspects of your program (limitations, known bugs)
+- positive aspects (extensions, special features)
+- describe your choice of modularization (abstractions), data structures, and algorithms
+- explain anything you did that is likely to be different from what other students may have done
+- justify any design decisions for which the rationale isn't immediately clear
+
+Feel free to modify the structure of this `readme.html` file to fit the current assignment and to fit how you wish to present your findings.
+
+
+!!! note: Math Typesetting
+    Surround your math with double dollar signs to have [MathJax](https://www.mathjax.org/) typeset it beautifully.
+    To add a tilde in math mode (using dollar signs), use the `\sim` command.
+    If an exponent has more than one character, you must surround it with curly braces.
+    In the example below, the exponent for $T$ must use curly braces, but they aren't required for $N$.
+
+    $$ \sim T^{1.2} N^2 $$
+
+    Note: Typesetting like this is optional; feel free to use plain text if you'd like.
+
+
+Submission
+-----------
+
+Use the CSE LogHistory Plug-in to create a zip file containing all your code, this `readme.html` document, and any additional files of evidence (ex: screenshots).
+If you create a zip by other means, it will include all the files under `tests` and might miss some important files (ex: `.log/history.log`).
+The former will make for a very large zip file; the latter will cause you to lose points.
+
+
+-->
+
+Author
+=============
+
+
+<!-- fill out the following table with your information -->
+<!-- Note: wrapping table in div.noheader will hide the table's header -->
+<!-- Note: wrapping table in div.firstcol will style the first column different from other columns -->
+<div class="noheader firstcol">
+    ------------------|-------------
+    name              | Heather Dalton
+    computer + OS     | Lab, Unix
+    time to complete  | 13 hr
+    partner           | Kayla Rehwoldt, Luke Stevens
+    additional help   | see reflection
+</div>
+
+
+
+
+
+
+Implementations
+===================
+
+kd-Tree Node
+--------------
+
+Our implementation of the kd-tree node was quite simple. Every node would hold a copy of a Point. This would allow us an
+easy way to get the x and y coordinates of the node. The node would also keep track of a value. This would allow us access
+to the value that is held at that particular x,y coordinate. Next we kept track of the left node and the right node
+because this allowed us to look at the next nodes left and right of the current. Finally we kept track of the partition
+of each node to see if it was an UPDOWN separation or a LEFTRIGHT separation.
+
+Nearest Neighbor
+------------------
+
+In our nearest function four main events happen. First, we check to see if the point passed in is equal to null. If it is
+a NullPointerException is thrown. Secondly, we check to see if the function isEmpty, then we return a null. Next we set
+the nearest node to be root and the nearestDist to equal the distance of the nearestNode's point distance. Finally we
+check to see if the nearestNode's point x is greater than the parameter p's x. If it is we recursively call our nearestR
+function first looking at nearestNode's left point and then looking at the nearestNode's right point. Otherwise we look
+at the opposite, first the nearestNode's right point and then the nearestNode's left point.
+
+Our helper function nearestR is where the nearest node is set and recursively looked for. It goes through a bunch of
+checks always looking at the left node first. If the function passes all of the recursive cases then the nearestDist is
+set to the current distance and the nearestNode is changed to be what is current.
+
+
+Analysis
+===============
+
+
+Memory
+-------
+
+<!--
+Using the 64-bit memory cost model from the textbook and lecture, give the total memory usage in bytes of your 2d tree
+data structure as a function of the number of points $N$.
+Use tilde notation to simplify your answer (i.e., keep the leading coefficient and discard lower-order terms).
+Include the memory for all referenced objects (including `Node` and `Point` objects) except for `Value` objects
+(because the type is unknown and the object is owned by the client).
+Also, include the memory for all referenced objects, including any references to the `Direction` enum.
+-->
+
+instance of                | bytes
+---------------------------|---------
+`Point`                    | $32$
+`PSKDTree` with $N$ points | $\sim 328N$
+
+
+
+Runtime
+--------
+
+<!--
+How many nearest neighbor calculations can your brute-force implementation perform per second for `input100K.txt` (100,000 points) and `input1M.txt` (1 million points), where the query points are random points in the unit square?
+Explain how you determined the operations per second.
+(Do not count the time to read in the points from file or to build the data structure.)
+
+Repeat the questions above with the 2d tree implementation.
+--->
+
+file            | brute force | 2d tree
+----------------|-------------|---------
+`input100K.txt` |         $420$ |     $708$
+`input1M.txt`   |         $13$ |     $30$
+
+
+
+
+Known bugs / limitations
+-------------------------
+
+<!--
+What bugs or limitations were troublesome?
+What bugs or limitations still remain?
+Are these bugs or limitations a problem in your implementation, algorithm, or something else?
+How do you know that you did not miss a bug?
+What additional tests did you run to ensure that your implementations are correct?
+-->
+
+We currently have two bugs still left in our implementation of PSKD tree. According to the tester, we are having a
+runtime problem for a PSKD single item. We are unsure of where we went wrong and it was difficult trying to ask a
+question to specifically correct that error. Another problem found by the tester was in the nearest(k). The error
+that was presented was that the tested code did something incorrectly. Logistically my group and I could not see
+where we went wrong and just left it with this error.
+
+
+
+
+Reflection
+===========
+
+<!--
+Describe whatever help (if any) that you received.
+Don't include readings, lectures, but do include any help from people (including course staff, lab TAs, classmates, and friends) and attribute them by name.
+How did you discuss the problem with others? (ex: white-board algorithms, looking over code for bugs, looking at print out results, etc.)
+-->
+
+We received help from two people, Dr. Denning and the TA: Daniel Gibson. Both mainly help up with mapping out our ideas
+on a whiteboard along with the debugging process. Their help was beneficial because it allowed us to understand the
+problem and finish the implementation in a reasonable amount of time.
+
+
+
+<!--
+Since this is a small group assignment, give one sentence explaining what each of you contributed.
+-->
+
+We all contributed to the project by whiteboard out ideas and asking questions to help our own understanding of what was going on.
+
+
+
+<!--
+Describe any serious problems you encountered.
+How much time did you spend writing new code, debugging code, thinking about the algorithms, discussing with someone else, running tests, writing comments and documentation, etc.?
+List any other comments here.
+Feel free to provide any feedback on how much you learned from doing the assignment, and whether you enjoyed doing it.
+-->
+
+A main problem that we encountered was trying to ask the right questions over slack because both the people we received
+help from were quarantined. Aside from this we didn’t really encounter any serious problems.
+
+writing new code: 3 hr
+debugging code: 2 hr
+thinking about the algorithms: 1 hr
+discussing with someone else: 1.5 hr
+running tests: 1.5 hr
+writing comments and documentation: 2 hr
+
+Another comment that I would recommend is to have more group projects. I feel that I learn a lot more and understand
+things a lot better when working in a group.
+
+
+
+
+
+
+
+
+<!--   Feel free to modify the following to fit a theme of your choosing   -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> <!-- a sans-serif font -->
+<style>  /* A TAYLOR-INSPIRED THEME */
+    body {font-family:'Open Sans',sans-serif;}
+    .md a:link, .md a:visited {color:hsl(252,23.0%,44.3%); font-family:'Open Sans',sans-serif;}
+    .md table.table th {background-color:hsl(252,23.0%,44.3%);}
+    .md .noheader th {display:none;}
+    .md .firstcol td:first-child {white-space:pre;color:white;vertical-align:top;font-weight:bold;border-color:black;background:hsl(252,23.0%,54.3%);}
+    .md .firstcol tr:nth-child(even) td:first-child {background:hsl(252,23.0%,44.3%);}
+    .md div.tilde { margin: 5px 0 20px; }
+</style>
+
+
+<!-- ****************************** -->
+<!--    Leave the content below     -->
+<!-- ****************************** -->
+
+<!-- The script and style below are added for clarity and to workaround a bug -->
+<script>
+    // this is a hack to workaround a bug in Markdeep+Mathjax, where
+    // `&#36;`` is automatically converted to `\(`` and `\)`` too soon.
+    // the following code will replace the innerHTML of all elements
+    // with class "dollar" with a dollar sign.
+    setTimeout(function() {
+        var dollars = document.getElementsByClassName('dollar');
+        for(var i = 0; i < dollars.length; i++) {
+            dollars[i].innerHTML = '&#' + '36;'; // split to prevent conversion to $
+        }
+    }, 1000);
+</script>
+<style>
+    /* adding some styling to <code> tags (but not <pre><code> coding blocks!) */
+    :not(pre) > code {
+        background-color: rgba(0,0,0,0.05);
+        outline: 1px solid rgba(0,0,0,0.15);
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+    }
+    /* fixes table of contents of medium-length document from looking weird if admonitions are behind */
+    .md div.mediumTOC { background: white; }
+    .md div.admonition { position: initial !important; }
+</style>
+
+<!--   Leave the following Markdeep formatting code, as this will format your text above to look nice in a wed browser   -->
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible");</script>
