@@ -1,0 +1,262 @@
+<meta charset="utf-8" lang="en">  <!-- this line allows UTF-8 characters in the .html file -->
+
+
+                    **P00_JavaIntro**
+
+
+<!--
+
+General
+========
+
+For each of your team's implementations, explain the following (where appropriate and applicable):
+
+- details on calling conventions, input and output data formats, limitations, bugs, and special features.
+- negative aspects of your program (limitations, known bugs)
+- positive aspects (extensions, special features, extra credit)
+- describe your choice of modularization (abstractions), data structures, and algorithms
+- explain anything you did that is likely to be different from what other students may have done
+- justify any design decisions for which the rationale isn't immediately clear
+
+Feel free to modify the structure of this `readme.html` file to fit the current assignment and to fit how you wish to present your findings.
+
+Take a look at the [Markdeep Feature Demo](https://casual-effects.com/markdeep/features.md.html) to see how you can markup this document.
+
+
+
+Submission
+-----------
+
+Use the CSE LogHistory Plug-in to create a zip file containing all your code, this `readme.html` document, and any additional files of evidence (ex: screenshots).
+If you create a zip by other means, it will include all the files under `tests` and might miss some important files (ex: `.log/history.log`).
+The former will make for a very large zip file; the latter will cause you to lose points.
+
+
+-->
+
+
+
+Author
+=============
+
+
+<!-- fill out the following table with your information -->
+<!-- Note: wrapping table in div.noheader will hide the table's header -->
+<!-- Note: wrapping table in div.firstcol will style the first column different from other columns -->
+<div class="noheader firstcol">
+                  |             
+------------------|-------------
+name              | Heather Dalton
+computer + OS     | Lab machine, Linux
+time to complete  | 6 hrs
+partner           | NA
+additional help   | Dr. Denning
+</div>
+
+
+
+
+Implementations
+===================
+
+<!--
+Provide a summary of how the algorithm or data structure works.
+Describe briefly how you implemented each class/function/data structure/algorithm/etc.
+How did you check whether the program was working correctly?
+Did you test parts individually?
+How long did it take to run each implementation against each set of data?
+How does the length/structure of the data impact the runtime of the algorithm?
+Do the results surprise you?
+Provide a short explanation on what you learned about these two implementations.
+How are they the same? How are they different?
+What happens to when you run each implementation (Brute Force and Binary Search) on the tiny data sets without sorting first?
+-->
+
+I learned that these two algorithms are simple to understand. The brute force iterates through every item while
+the binary splits the data sets into two halves comparing if the middle number is larger or smaller than the desired item.
+Even though these algorithms may seem very similar when testing the short lists the user finds out later the drastic
+difference between the time it takes to run both algorithms using the large sets of data. The only thing that changes
+with brute force by sorting the data is the amount of time it takes to run the algorithm. I found that with running a
+sorted short list in brute it took 0.004 seconds longer than an unsorted list. This is because the algorithm has to go through
+each value and with a large integer sorted to be at the end, it takes more iterations to get to that point. While on the
+other hand if the user does not sort the binary algorithm it gives it a logic error but it does go about 0.007 faster.
+In other words, because the algorithm is only looking to see if the item is larger or smaller than the middle item, it
+will miss the other half of the item making the computer believe that the number does not exist in that list.
+
+
+Brute Force Search
+---------------------
+
+Brute Force Search algorithm  takes a list of integers and iterates through each item in that list until
+it finds the value it is looking for or runs out of items. To summarize, I wrote one function called rank and one main
+function for this algorithm. The rank function's purpose was to iterate through the list using a for loop and if it found the number it
+was looking for then it would return that value. Otherwise if the value was not found it would return a negative one,
+indicating that the value was not in this list. On the other hand, the purpose of the main function was to compare two lists
+iterating through both seeing if there were any value non-matching pares. The main function had a while loop so that it
+would continue to loop until the end of the first list of integers. Then using the rank function the algorithm would
+compare one item to the second list seeing if that item was in the second list of integers. If the item did not find a
+match in the second list then that number would be printed to the console. Simply put if the function returned a
+negative one, that item would be printed to the screen. To check that the program was working properly I looked at the short lists and
+manually compared which values were not repeated in the other list. For this algorithm I did not test parts individually.
+
+While running the brute force algorithm I found that the time it took to run two short lists was about 0.028 seconds. But when
+it came to running the long two lists it took 1204.213 seconds which is about 20 minutes. These results helped me
+conclude that the runtime of this algorithm is faster if the list of items the user compares is shorter. Otherwise
+if the user is comparing long lists then they will have to sit back and relax as they wait for the comparison to finish.
+These outcomes of the test did not surprise me, but what did was the time it took to finish the long lists.
+
+
+
+Binary Search
+-----------------
+
+The binary search is an algorithm that organizes the list of integers and only searches half of the list at a time. It does this
+by finding the middle of the list and determining if the given integer is greater or less than that middle value. The
+Binary continues to go through this search process until it finds the item it is looking for or there are no values left
+in the list. This is the step that the rank function goes through. To go further into detail, first the algorithm looks for the
+middle of the list. Then it chooses if the integer is greater or smaller than the middle value and then changes the high
+and low values to the middle plus one or middle minus one. Finally it will return either the middle value or a negative
+one indicating the value is not in the list. The main function does almost the exact same thing as it did in the brute
+force algorithm. The one difference is
+that in Binary the main function sorts both inputted lists before it iterates through the lists. Like brute force the
+output will be the printed values of the items that aren't duplicated. The way that I checked if this program was
+correct was the same as brute force. I used my results from compiling the tiny two lists manually to see whether or not it was correct.
+For this one I did have to test some parts individually because I had an error in my code where the code did not outputs
+any printed numbers. I then found out that the problem was in the rank function because I did not return the middle value.
+
+While running the binary search algorithm I found that the time it took to run two short lists was 0.025 seconds. But
+when it came to running the long two lists it took 8.373 seconds. Obviously the time is longer with longer lists but the
+time is still manageable because it is only about an eight second wait. These results did surprise me because it still
+seems super fast for comparing 1000 values.
+
+
+
+Runtimes
+---------
+
+<!-- ... -->
+
+
+<!-- update the table below with your input sizes and runtimes -->
+<!-- create additional rows as needed (should run more than 2 tests!) -->
+algorithm | whitelist sz | checklist sz | time (secs) | time2 (sec)
+----------|--------------|--------------|---------------------------
+brute     |     tiny     |     tiny     | 0.028       | 0.037
+binary    |     tiny     |     tiny     | 0.025       | 0.036
+brute     |     large    |     large    | 1204.213    | 1377.91
+binary    |     large    |     large    | 8.373       | 10.97
+
+
+43.035
+
+
+Known bugs / limitations
+-------------------------
+
+<!--
+What bugs or limitations were troublesome?
+What bugs or limitations still remain?
+Are these bugs or limitations a problem in your implementation, algorithm, or something else?
+How do you know that you did not miss a bug?
+What additional tests did you run to ensure that your implementations are correct?
+-->
+
+I had one main bug. To summarize this bug would not print out the necessary integers to the
+output. This was troublesome because it seemed like an easy problem to fix but at that moment in time I could not figure it
+out. Finally after running tests and talking with Dr. Denning we figured out that my problem was because I did not put an
+else before the return mid. From what I can tell there are no more bugs because it runs the way I expect it to. If I
+had not fixed this problem, this bug would have been detrimental to the implementation of the code. I know that there are
+no more bugs because there were no syntax errors along with no compilation errors. In order to make sure that both
+of the algorithms work I tested manually what the output would have been with both of the small lists.
+This allowed me to compare my manual results with the results of the code to make sure both are running the way I
+expected it to.
+
+
+
+Reflection
+===========
+
+<!--
+Describe whatever help (if any) that you received.
+Don't include readings, lectures, but do include any help from people (including course staff, lab TAs, classmates, and friends) and attribute them by name.
+How did you discuss the problem with others? (ex: white-board algorithms, looking over code for bugs, looking at print out results, etc.)
+Describe any serious problems you encountered.
+How much time did you spend writing new code, debugging code, thinking about the algorithms, discussing with someone else, running tests, writing comments and documentation, etc.?
+List any other comments here.
+Feel free to provide any feedback on how much you learned from doing the assignment, and whether you enjoyed doing it.
+-->
+
+I received help from two people. First was from Dr. Denning. As explained in my binary implementation and bug description I was having a
+problem with my code where it was not printing out any output but my brute force was working as expected. Trying to figure
+out the problem, I asked Dr. Denning during his office hours to see if he could see my
+mistake. We went through printing out in specific areas, trying to debug what was going on. After printing what
+was returned from the rank function we realized that it was only printing sevens. That is when we went there and found
+that I had mistyped and not included the else before the return mid. Secondly I had guidance from Kayla Rehwoldt. With
+her I mainly verbally talked about the different expectations to include in the readme.html file along with a helpful
+hint Dr. Denning gave my lab section for the most efficient way to time the different algorithms.
+
+Coding Everything: about 3hr
+Debugging: 30 min within the 3 hrs
+Thinking: 15 min before beginning
+Discussing: 20 min over all
+Testing: 43.36 min
+Writing the readme.html: 2.5 hr
+Editing readme.html: 30 min (while rinding tests)
+
+I enjoyed this project because I relativity knew what the algorithms were from previous classes and could understand the
+code that we mainly referenced. For future classes I would recommend explaining these algorithms by making them act out
+the algorithms by using the deck of cards we received at the beginning of this course.
+
+
+
+
+
+
+
+<!--   Feel free to modify the following to fit a theme of your choosing   -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> <!-- a sans-serif font -->
+<style>  /* A TAYLOR-INSPIRED THEME */
+    body {font-family:'Open Sans',sans-serif;}
+    .md a:link, .md a:visited {color:hsl(252,23.0%,44.3%); font-family:'Open Sans',sans-serif;}
+    .md table.table th {background-color:hsl(252,23.0%,44.3%);}
+    .md .noheader th {display:none;}
+    .md .firstcol td:first-child {white-space:pre;color:white;vertical-align:top;font-weight:bold;border-color:black;background:hsl(252,23.0%,54.3%);}
+    .md .firstcol tr:nth-child(even) td:first-child {background:hsl(252,23.0%,44.3%);}
+    .md div.tilde { margin: 5px 0 20px; }
+</style>
+
+
+<!-- ****************************** -->
+<!--    Leave the content below     -->
+<!-- ****************************** -->
+
+<!-- The script and style below are added for clarity and to workaround a bug -->
+<script>
+    // this is a hack to workaround a bug in Markdeep+Mathjax, where
+    // `&#36;`` is automatically converted to `\(`` and `\)`` too soon.
+    // the following code will replace the innerHTML of all elements
+    // with class "dollar" with a dollar sign.
+    setTimeout(function() {
+        var dollars = document.getElementsByClassName('dollar');
+        for(var i = 0; i < dollars.length; i++) {
+            dollars[i].innerHTML = '&#' + '36;'; // split to prevent conversion to $
+        }
+    }, 1000);
+</script>
+<style>
+    /* adding some styling to <code> tags (but not <pre><code> coding blocks!) */
+    :not(pre) > code {
+        background-color: rgba(0,0,0,0.05);
+        outline: 1px solid rgba(0,0,0,0.15);
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+    }
+    /* fixes table of contents of medium-length document from looking weird if admonitions are behind */
+    .md div.mediumTOC { background: white; }
+    .md div.admonition { position: initial !important; }
+</style>
+
+<!--   Leave the following Markdeep formatting code, as this will format your text above to look nice in a wed browser   -->
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible");</script>

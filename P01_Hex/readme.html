@@ -1,0 +1,301 @@
+<meta charset="utf-8" lang="en">  <!-- this line allows UTF-8 characters in the .html file -->
+
+
+                    **P01_Hex**
+
+
+<!--
+
+General
+========
+
+For each of your team's implementations, explain the following (where appropriate and applicable):
+
+- details on calling conventions, input and output data formats, limitations, bugs, and special features.
+- negative aspects of your program (limitations, known bugs)
+- positive aspects (extensions, special features)
+- describe your choice of modularization (abstractions), data structures, and algorithms
+- explain anything you did that is likely to be different from what other students may have done
+- justify any design decisions for which the rationale isn't immediately clear
+
+Feel free to modify the structure of this `readme.html` file to fit the current assignment and to fit how you wish to present your findings.
+
+Take a look at the [Markdeep Feature Demo](https://casual-effects.com/markdeep/features.md.html) to see how you can markup this document.
+
+
+!!! note: Math Typesetting
+    Surround your math with double dollar signs to have [MathJax](https://www.mathjax.org/) typeset it beautifully.
+    To add a tilde in math mode (using dollar signs), use the `\sim` command.
+    If an exponent has more than one character, you must surround it with curly braces.
+    In the example below, the exponent for $T$ must use curly braces, but they aren't required for $N$.
+
+    $$ \sim T^{1.2} N^2 $$
+
+    Note: Typesetting like this is optional; feel free to use plain text if you'd like.
+
+
+Submission
+-----------
+
+Use the CSE LogHistory Plug-in to create a zip file containing all your code, this `readme.html` document, and any additional files of evidence (ex: screenshots).
+If you create a zip by other means, it will include all the files under `tests` and might miss some important files (ex: `.log/history.log`).
+The former will make for a very large zip file; the latter will cause you to lose points.
+
+
+-->
+
+
+Author
+=============
+
+
+<!-- fill out the following table with your information -->
+<!-- Note: wrapping table in div.noheader will hide the table's header -->
+<!-- Note: wrapping table in div.firstcol will style the first column different from other columns -->
+<div class="noheader firstcol">
+                  |             
+------------------|-------------
+name              | Heather Dalton
+computer + OS     | Lab, Linux
+time to complete  | 13.66 hr
+partner           | N/A
+additional help   | See reflection
+</div>
+
+
+
+
+
+Implementations
+===================
+
+<!--
+Describe how you implemented `HexBoard.java`.
+How did you check whether the game was won by a player?
+-->
+
+HexBoard is a well known two player board game. The goal of this game to make a connection between the players two sides.
+That is what the implementation of `HexBoard.java` is trying to model. `HexBoard.java` is an object class for the game.
+There are many different functions in this class that allows the players to receive information about their game progress.
+These include isSet(), getPlayer(), setTile(), numberOfUnsetTiles(), hasPlayer1Won(), hasPlayer2Won(), and isOnWinningPath().
+In my implementation I had to us an object called union-find. This allows the user an easy way to check if a player has
+a connected path to the player's two virtual nodes. If the union's method called connected returns true, it tells that the one of
+the players has found a connected path between the board.
+
+`QuickFindUF` Runtimes
+----------------------
+
+<!--
+Report the runtimes of `HexBoard` using `QuickFindUF` in the tables below.
+First, hold constant the value of $T$ (number of games played), but vary the value of $N$ (size of board).
+Then, hold constant the value of $N$, but vary the value of $T$.
+
+Finally, give a formula using tilde notation for the running time (seconds) of `HexBoardStats.java` as a function
+of both $N$ (size of board) and $T$ (number of games).
+Model the running time as a power law and be sure to give both the coefficient and exponent of the leading term.
+Your coefficients should be based on _empirical data_ and rounded to two significant digits.
+For example, $5.3 * 10^{-8} * N^{5.0} T^{1.5}$.
+-->
+
+
+<div style="float:right">(keeping $T$ constant)</div>
+
+ $T$      | $N$ | time (secs)| Prob1 | Prob2
+:--------:|:---:|:----------:|:-----:|:----:
+  100000  |  2  | 0.047      | 49.826| 50.173
+  100000  |  4  | 0.172      | 49.671| 50.329
+  100000  |  8  | 0.745      |50.038 | 49.962
+  100000  |  16  | 4.596      |49.665 | 0.334
+  100000  |  32  | 37.798     |50.137 | 49.863
+
+
+<div style="float:right">(keeping $N$ constant)</div>
+
+ $T$  |   $N$  | time (secs)| Prob1 | Prob2
+:---:   |:---: |:----------:|:-----:|:----:
+100000  |  10  | 1.392      | 49.729| 50.271
+200000  |  10  | 2.671      | 49.797| 50.202
+400000  |  10  | 5.07      |50.034 | 49.965
+800000  |  10  | 10.205      |50.0355 | 49.964
+1600000  |  10  | 20.334     |50.039 | 49.960
+
+
+
+<!--
+Place your runtime below.
+Typeset your answer with double dollar signs: $$ \sim... $$
+-->
+
+Running time as a function of $N$ and $T$:
+
+$$ \sim 1.0 * 10^{1.0} * N^{1.0} T^{1.0} $$
+
+
+`WeightedQuickUnionUF` Runtimes
+-------------------------------
+
+<!--
+Repeat the previous section, but use `WeightedQuickUnionUF`.
+-->
+
+<div style="float:right">(keeping $T$ constant)</div>
+
+ $T$    | $N$ | time (secs)| Prob1 | Prob2
+:------:|:---:|:----------:|:-----:|:----:
+100000  |  2  | 0.049      | 49.95| 50.05
+100000  |  4  | 0.194      | 50.004| 49.996
+100000  |  8  | 0.682     |49.976 | 50.024
+100000  |  16  | 2.757      |49.855 | 50.144
+100000  |  32  | 11.351      |50.172 | 49.828
+
+
+<div style="float:right">(keeping $N$ constant)</div>
+
+
+ $T$ | $N$ | time (secs)| Prob P1 Wins | Prob P2 Wins
+:---:|:---:|:----------:|:-----:|:----:
+100000  |  10  | 1.192  | 50.199| 49.801
+200000  |  10  | 2.31  | 50.071| 49.929
+400000  |  10  | 4.429  |49.844| 50.155
+800000  |  10  | 8.6  |50.0351 | 49.964
+1600000  |  10  | 17.262  |49.927 | 50.072
+
+
+
+<!--
+Place your runtime below.
+Typeset your answer with double dollar signs: $$ \sim... $$
+-->
+
+Running time as a function of $N$ and $T$:
+
+$$ \sim 1.0 * 10^{1.0} * N^{1.0} T^{1.0} $$
+
+
+
+Patterns
+--------
+
+<!--
+Run `HexBoardStats` with `N0 = 2`, `N1 = 15`, and `T = 100000`.
+What patterns do you see emerge from the probability estimates?
+Add a table or chart if necessary.
+-->
+
+From what I could see when running `HexBoardStats` with `N0 = 2`, `N1 = 15`, and `T = 100000` the probability got very close
+to a 50/50 split. The fastest runtime was 0.05 second at board size 2 while the longest was board size 15 at 2.504 seconds.
+
+
+
+
+Known bugs / limitations
+-------------------------
+
+<!--
+What bugs or limitations were troublesome?
+What bugs or limitations still remain?
+Are these bugs or limitations a problem in your implementation, algorithm, or something else?
+How do you know that you did not miss a bug?
+What additional tests did you run to ensure that your implementations are correct?
+-->
+
+The bug, backwash, was very troublesome. I understand that because of unioning places together
+as long as one of the nodes was connected to the virtual node it would technically be connected by backwash.
+I was unable to solve the solution to the backwash in the HexBoard. This bug is a limitation with the
+final implementation of the HexBoard because it doesn't complete the final requirements.
+
+
+
+
+Reflection
+===========
+
+<!--
+Describe whatever help (if any) that you received.
+Don't include readings, lectures, but do include any help from people (including course staff, lab TAs, classmates,
+    and friends) and attribute them by name.
+How did you discuss the problem with others? (ex: white-board algorithms, looking over code for bugs, looking at print out results, etc.)
+Describe any serious problems you encountered.
+How much time did you spend writing new code, debugging code, thinking about the algorithms, discussing with someone
+    else, running tests, writing comments and documentation, etc.?
+List any other comments here.
+Feel free to provide any feedback on how much you learned from doing the assignment, and whether you enjoyed doing it.
+-->
+
+One person I received help from was Dr. Denning. With him I talked through HexBoard implementation and what was expected in the code
+along clarifications on what was already written. We mainly discussed using the whiteboard in 218 and talked about the algorithms. I
+also slacked him a couple of time asking what the meaning of some bugs where and suggestions in how to correct them. My biggest bug
+that I encountered was being unable to open up the Interactive HexBoard. After slacking Dr. Denning and him telling me the error
+could be a result of an infinite loop, I realized what the problem was. My problem was that when assigning my end nodes, the place
+I assigned them was out of range. For example, on a 4X4 board the end nodes would be equal to 16, 17, 18, and 19. But originally
+when I started assigning which player was at each location I thought that: board[N+1]--> index=16, board[N+2]--> index=17,
+board[N+3]--> index=18, board[N+4]--> index=19. Once I realized my mistake I changed the declarations to be board[N]--> index=16, board[N+1]--> index=17,
+board[N+2]--> index=18, board[N+3]--> index=19, which corrected my error and I was able to play the game. I also received help from many different
+classmates including: Kayla Reywoldt, Luke Stevens, Livia Rose, and Joe Gorski. With them all I talked using whiteboards
+how they simplified the union code, what was expected in the HexBoardStats, along with clarifying question about the tables in the readme.html file.
+I also recieved help from the Joseph V. on how to caluclate the correct equation.
+
+writing new code: 7.83 hr
+
+debugging code: 2 hr
+
+testing: 30 min
+
+thinking about the algorithms: 1.83 hr
+
+readme.html: 1.5 hr
+
+During this assignment I learned new ways to problem solve and how important it is to ask question early. I also learned
+that I understand things the best through talking things out with others along with having something to reference. Overall
+I did enjoyed this project because I understood what was expected to happen and had time to think. The only part I did not
+enjoy was the HexBoardStat implementation because I felt like I was guessing what was supposed to be done.
+
+
+
+<!--   Feel free to modify the following to fit a theme of your choosing   -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> <!-- a sans-serif font -->
+<style>  /* A TAYLOR-INSPIRED THEME */
+    body {font-family:'Open Sans',sans-serif;}
+    .md a:link, .md a:visited {color:hsl(252,23.0%,44.3%); font-family:'Open Sans',sans-serif;}
+    .md table.table th {background-color:hsl(252,23.0%,44.3%);}
+    .md .noheader th {display:none;}
+    .md .firstcol td:first-child {white-space:pre;color:white;vertical-align:top;font-weight:bold;border-color:black;background:hsl(252,23.0%,54.3%);}
+    .md .firstcol tr:nth-child(even) td:first-child {background:hsl(252,23.0%,44.3%);}
+    .md div.tilde { margin: 5px 0 20px; }
+</style>
+
+
+<!-- ****************************** -->
+<!--    Leave the content below     -->
+<!-- ****************************** -->
+
+<!-- The script and style below are added for clarity and to workaround a bug -->
+<script>
+    // this is a hack to workaround a bug in Markdeep+Mathjax, where
+    // `&#36;`` is automatically converted to `\(`` and `\)`` too soon.
+    // the following code will replace the innerHTML of all elements
+    // with class "dollar" with a dollar sign.
+    setTimeout(function() {
+        var dollars = document.getElementsByClassName('dollar');
+        for(var i = 0; i < dollars.length; i++) {
+            dollars[i].innerHTML = '&#' + '36;'; // split to prevent conversion to $
+        }
+    }, 1000);
+</script>
+<style>
+    /* adding some styling to <code> tags (but not <pre><code> coding blocks!) */
+    :not(pre) > code {
+        background-color: rgba(0,0,0,0.05);
+        outline: 1px solid rgba(0,0,0,0.15);
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+    }
+    /* fixes table of contents of medium-length document from looking weird if admonitions are behind */
+    .md div.mediumTOC { background: white; }
+    .md div.admonition { position: initial !important; }
+</style>
+
+<!--   Leave the following Markdeep formatting code, as this will format your text above to look nice in a wed browser   -->
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible");</script>

@@ -1,0 +1,249 @@
+<meta charset="utf-8" lang="en">  <!-- this line allows UTF-8 characters in the .html file -->
+
+                    **P02_DataTypes**
+
+
+<!--
+
+General
+========
+
+For each of your team's implementations, explain the following (where appropriate and applicable):
+
+- details on calling conventions, input and output data formats, limitations, bugs, and special features.
+- negative aspects of your program (limitations, known bugs)
+- positive aspects (extensions, special features)
+- describe your choice of modularization (abstractions), data structures, and algorithms
+- explain anything you did that is likely to be different from what other students may have done
+- justify any design decisions for which the rationale isn't immediately clear
+
+Feel free to modify the structure of this `readme.html` file to fit the current assignment and to fit how you wish to present your findings.
+
+
+!!! note: Math Typesetting
+    Surround your math with double dollar signs to have [MathJax](https://www.mathjax.org/) typeset it beautifully.
+    To add a tilde in math mode (using dollar signs), use the `\sim` command.
+    If an exponent has more than one character, you must surround it with curly braces.
+    In the example below, the exponent for $T$ must use curly braces, but they aren't required for $N$.
+
+    $$ \sim T^{1.2} N^2 $$
+
+    Note: Typesetting like this is optional; feel free to use plain text if you'd like.
+
+
+Submission
+-----------
+
+Use the CSE LogHistory Plug-in to create a zip file containing all your code, this `readme.html` document, and any additional files of evidence (ex: screenshots).
+If you create a zip by other means, it will include all the files under `tests` and might miss some important files (ex: `.log/history.log`).
+The former will make for a very large zip file; the latter will cause you to lose points.
+
+
+-->
+
+
+
+Author
+=============
+
+
+<!-- fill out the following table with your information -->
+<!-- Note: wrapping table in div.noheader will hide the table's header -->
+<!-- Note: wrapping table in div.firstcol will style the first column different from other columns -->
+<div class="noheader firstcol">
+                  |             
+------------------|-------------
+name              | Heather Dalton
+computer + OS     | Lab; Linux
+time to complete  | ~10 hours
+partner           | N/A
+additional help   | See reflection
+</div>
+
+
+Implementations
+===================
+
+
+`Steque` Implementation
+--------------------------
+
+<!--
+Explain briefly how you implemented the `Steque.java` class.
+How did you check that your implementation was correct?
+Include code listings, screenshots, diagrams, etc. if helpful.
+-->
+I wrote `Steque.java` by using the implementation talked about in the lecture. After reviewing the different
+implementations I found the best set of code and modified it accordingly. In order to support this code I created
+three private variables: Node first, Node last, and int stequeSize. There are three main functions in this class.
+Enqueue() adds an item to the bottom of steque. Push() adds item to the top of the list. The main modification I did
+in these functions was at the end I incremented the stequeSize. While the pop(), which is a function that removes
+the top of the steque, I added a check to see is the stequeSize < 0 (also could have done isEmpty()) then there I
+decremented the stequeSize. I checked my code by both using the tester code provided by Dr. Denning along with writing
+basic lines of code in the main function.
+
+
+`MinimumStack` Implementation
+------------------------------
+
+<!--
+Explain briefly how you implemented the `MinimumStack.java` class.
+How did you check that your implementation was correct?
+Include code listings, screenshots, diagrams, etc. if helpful.
+-->
+I wrote `MinimumStack.java` by using the implementation talked about in the lecture. After reviewing the different
+implementations I found the best set of code and modified it accordingly. There are three main functions in this class.
+All three of these functions were very similar to the ideas in the `Steque.java`. I checked my code by both using the tester code provided by Dr. Denning along with writing
+basic lines of code in the main function.
+
+
+`OnePointerQueue` Implementation
+-----------------------------------
+
+<!--
+Explain briefly how you implemented the `OnePointerQueue.java` class.
+How did you check that your implementation was correct?
+Include code listings, screenshots, diagrams, etc. if helpful.
+-->
+I wrote `OnePointerQueue.java` by using the implementation talked about in the lecture. After reviewing the different
+implementations I found the best set of code and modified it accordingly. Unfortunatly I was unable to figure out my error
+for this portion so it has the basic idea but doesn't pass all of the tests. I tried checking the code by both using the tester code provided by Dr. Denning along with writing
+basic lines of code in the main function.
+
+
+Memory Analysis
+-----------------
+
+<!--
+How much memory (in bytes) do your data types use to store $N$ items in the worst case?
+Use the 64-bit memory cost model from section 1.4 of the textbook and use tilde notation to simplify your answer.
+Briefly justify your answers and show your work.
+
+Do not include the memory for the items themselves (as this memory is allocated by the client and depends on the item type) or for any iterators, but do include the memory for the references to the items (in the underlying array or linked list).
+
+Note: The `Stack` class (provided by the book's `algs4.jar`) implements the stack using a singly-linked list.
+So, your memory analysis of `MinimumStack` should take this into account.
+-->
+
+class             | memory (bytes)
+------------------|---------------
+`Steque`          | $\sim 100N$
+`MinimumStack`    | $\sim 120N$
+`OnePointerQueue` | $\sim 80N$
+
+
+
+Known bugs / limitations
+-------------------------
+<!--
+What bugs or limitations were troublesome?
+What bugs or limitations still remain?
+Are these bugs or limitations a problem in your implementation, algorithm, or something else?
+How do you know that you did not miss a bug?
+What additional tests did you run to ensure that your implementations are correct?
+-->
+From what I can see I have no bugs in my working implementations of steque and minimumstack. I tested the edge
+cases and from what I could see no bugs presented itself (thankfully). One limitation to my code is that while OnePointerQueue
+runs, it doesn't do all the things that it is required to do. I think that the size and isEmpty works but know
+that when running enqueue and dequeue it doesn't work after seeing the results from the test Dr. Denning ran.
+I didn't know what was wrong/how to fix it and decided to stuffer the consequence.
+
+
+
+
+Reflection
+===========
+
+<!--
+Describe whatever help (if any) that you received.
+Don't include readings, lectures, but do include any help from people (including course staff, lab TAs, classmates, and friends) and attribute them by name.
+How did you discuss the problem with others? (ex: white-board algorithms, looking over code for bugs, looking at print out results, etc.)
+-->
+
+The two people that I talked to was Kayla Rehwoldt and Owen Elliott. I mainly discussed with them using whiteboards or
+paper that was on hand. I mainly asked for a refresher on the overall ideas of the different function and talked out different theories. We also
+discussed the different requirements of the readme file and what the output might entail.
+
+
+
+<!--
+Since this is an individual assignment, if you worked with a partner, assert below that the work you are turning in is your own work,
+and that you only did "whiteboard" work as a group.
+Give one sentence explaining what each of you contributed.
+If you used the code from the lab challenge, explain what is shared between you and your lab partner.
+-->
+
+When talking to the other two it was strictly white-boarding three different ideas and debugging the problems.
+
+
+
+
+<!--
+Describe any serious problems you encountered.
+How much time did you spend writing new code, debugging code, thinking about the algorithms, discussing with someone else, running tests, writing comments and documentation, etc.?
+List any other comments here.
+Feel free to provide any feedback on how much you learned from doing the assignment, and whether you enjoyed doing it.
+-->
+I encountered
+
+writing new code: 3 hr
+debugging code: 2 hr
+thinking about the algorithms: 1 hr (20 ish minutes per)
+discussing with someone else: 1 hr
+running tests: 1 hr
+writing comments and documentation(readme.txt): 2 hrs
+
+
+
+
+
+
+
+
+<!--   Feel free to modify the following to fit a theme of your choosing   -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> <!-- a sans-serif font -->
+<style>  /* A TAYLOR-INSPIRED THEME */
+    body {font-family:'Open Sans',sans-serif;}
+    .md a:link, .md a:visited {color:hsl(252,23.0%,44.3%); font-family:'Open Sans',sans-serif;}
+    .md table.table th {background-color:hsl(252,23.0%,44.3%);}
+    .md .noheader th {display:none;}
+    .md .firstcol td:first-child {white-space:pre;color:white;vertical-align:top;font-weight:bold;border-color:black;background:hsl(252,23.0%,54.3%);}
+    .md .firstcol tr:nth-child(even) td:first-child {background:hsl(252,23.0%,44.3%);}
+    .md div.tilde { margin: 5px 0 20px; }
+</style>
+
+
+<!-- ****************************** -->
+<!--    Leave the content below     -->
+<!-- ****************************** -->
+
+<!-- The script and style below are added for clarity and to workaround a bug -->
+<script>
+    // this is a hack to workaround a bug in Markdeep+Mathjax, where
+    // `&#36;`` is automatically converted to `\(`` and `\)`` too soon.
+    // the following code will replace the innerHTML of all elements
+    // with class "dollar" with a dollar sign.
+    setTimeout(function() {
+        var dollars = document.getElementsByClassName('dollar');
+        for(var i = 0; i < dollars.length; i++) {
+            dollars[i].innerHTML = '&#' + '36;'; // split to prevent conversion to $
+        }
+    }, 1000);
+</script>
+<style>
+    /* adding some styling to <code> tags (but not <pre><code> coding blocks!) */
+    :not(pre) > code {
+        background-color: rgba(0,0,0,0.05);
+        outline: 1px solid rgba(0,0,0,0.15);
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+    }
+    /* fixes table of contents of medium-length document from looking weird if admonitions are behind */
+    .md div.mediumTOC { background: white; }
+    .md div.admonition { position: initial !important; }
+</style>
+
+<!--   Leave the following Markdeep formatting code, as this will format your text above to look nice in a wed browser   -->
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible");</script>
